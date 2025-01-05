@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2030 BTC Retirement Fund</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            padding: 20px;
+        }
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>2030 BTC Retirement Fund</h1>
+        <p>Track the BTC price, daily purchases, and our meme coin's performance.</p>
+
+        <!-- BTC Price Chart -->
+        <h2>BTC Price (Live)</h2>
+        <div class="chart-container">
+            <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_e80a0&symbol=BITSTAMP:BTCUSD&interval=D&theme=light&style=1" 
+            width="100%" height="400" frameborder="0"></iframe>
+        </div>
+
+        <!-- BTC Purchase Chart -->
+        <h2>Daily BTC Purchases</h2>
+        <div class="chart-container">
+            <canvas id="btc-purchase-chart"></canvas>
+        </div>
+
+        <!-- Meme Coin Price Chart -->
+        <h2>Meme Coin Price (Live)</h2>
+        <div class="chart-container">
+            <canvas id="meme-coin-chart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const btcPurchaseData = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+            datasets: [{
+                label: 'BTC Purchase Amount ($)',
+                data: [5, 10, 15, 20, 25],
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        };
+
+        const ctx1 = document.getElementById('btc-purchase-chart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: btcPurchaseData,
+        });
+
+        const memeCoinData = {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+            datasets: [{
+                label: 'Meme Coin Price ($)',
+                data: [0.01, 0.05, 0.15, 0.25, 0.40],
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1
+            }]
+        };
+
+        const ctx2 = document.getElementById('meme-coin-chart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'line',
+            data: memeCoinData,
+        });
+    </script>
+</body>
+</html>
